@@ -21,9 +21,6 @@ Calculates weekly pay based on the employee’s total hours worked and hourly ra
 ⏱️ Overtime Management
 Computes overtime compensation using a premium rate of 125% of the regular hourly pay.
 
-🎁 Allowance Distribution
-Converts monthly allowances such as rice subsidy, phone allowance, and clothing allowance into their corresponding weekly amounts.
-
 📑 Government Deductions
 Automatically calculates required government contributions, including:
 
