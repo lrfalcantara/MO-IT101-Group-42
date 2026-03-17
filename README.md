@@ -1,5 +1,7 @@
 🏢 MotorPH Payroll System
 
+Project Plan: https://docs.google.com/spreadsheets/d/1Ta4znzLqk-qGkLev3BzeyonwN0DRv-4YeIICNLzVID8/edit?usp=sharing
+
 📋 Overview
 The MotorPH Payroll System is a Java application created to compute and present employee salary details using attendance records, employee data, and required government deductions. The program processes employee time logs, determines total working hours, calculates overtime and allowances, and applies the necessary deductions. Through this process, the system provides clear and complete payroll information for every employee.
 
