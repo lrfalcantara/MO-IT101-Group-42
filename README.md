@@ -31,5 +31,5 @@ Withholding Tax
 👨‍💻 Developers
 MO-IT101-Group 42 | CP1 | A1101 Members:
 
-Alcantara Jr., Ferdinand Gomez
-Beltran, Abel Eliezer
+• Alcantara Jr., Ferdinand Gomez
+• Beltran, Abel Eliezer
