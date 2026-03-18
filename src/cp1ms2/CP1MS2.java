@@ -59,10 +59,9 @@ public class CP1MS2 {
 
         // ====== STEP 1: Load CSV Data ======
         System.out.println("=== MotorPH Basic Payroll System ===");
-        System.out.print("Enter CSV file path (example: motorph_data.csv): ");
-        String path = sc.nextLine().trim();
+        
 
-        if (!loadCSV(path)) {
+        if (!loadCSV()) {
             System.out.println("Program terminated due to CSV read error.");
             return;
         }
@@ -388,8 +387,9 @@ public class CP1MS2 {
     // CSV LOADING (procedural)
     // ============================================================
 
-    static boolean loadCSV(String path) {
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+    static boolean loadCSV() { 
+        String filePath = "motorph_data.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 
             String line = br.readLine();
             if (line == null) {
@@ -549,4 +549,4 @@ public class CP1MS2 {
         }
     } 
 }
-    
+   
