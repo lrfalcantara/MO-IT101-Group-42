@@ -1,2 +1,0 @@
-CP1MS2.MotorPHPayrollSystem
-motorph.payroll.system.MotorPHPayrollSystem

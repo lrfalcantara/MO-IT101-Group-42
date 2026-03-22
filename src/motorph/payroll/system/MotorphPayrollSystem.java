@@ -1,8 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package cp1ms2;
+package motorph.payroll.system;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,10 +16,13 @@ import java.util.Scanner;
 
 /**
  *
- * @author ASUS
+ * @author Abel
+ * @author Ferdinand 
  */
-public class CP1MS2 {
-      //====== MAX SIZES (adjust if needed) ======
+
+public class MotorphPayrollSystem {
+
+    //====== MAX SIZES (adjust if needed) ======
     static final int MAX_EMP = 2000;
     static final int MAX_REC = 200000;
 
@@ -56,10 +59,8 @@ public class CP1MS2 {
     
     public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-
-        // ====== STEP 1: Load CSV Data ======
         System.out.println("=== MotorPH Basic Payroll System ===");
-        
+       
 
         if (!loadCSV()) {
             System.out.println("Program terminated due to CSV read error.");
@@ -276,6 +277,7 @@ public class CP1MS2 {
             // ===== DISPLAY CUTOFF 1 =====
             System.out.println("\nCutoff Date: " + monthName(month) + " 1 to " + monthName(month) + " 15");
             System.out.println("Total Hours Worked: " + hours1);
+            System.out.println("Hourly Rate: " +rate);
             System.out.println("Gross Salary: " + gross1);
             System.out.println("Net Salary: " + net1);
             System.out.println("==============================");
@@ -383,6 +385,21 @@ public class CP1MS2 {
         return monthlyGross * TAX_RATE;
     }
 
+    /*
+     * computeNetPay is required by your task.
+     * Here, net pay means: monthlyGross - (all monthly deductions).
+     * In the milestone display, we apply ALL deductions to the 2nd cutoff payout,
+     * but this method is still useful for verification.
+     */
+    static double computeNetPay(double monthlyGross) {
+        double sss = computeSSS(monthlyGross);
+        double phil = computePhilHealth(monthlyGross);
+        double pag = computePagIbig(monthlyGross);
+        double tax = computeIncomeTax(monthlyGross);
+        double total = sss + phil + pag + tax;
+        return monthlyGross - total;
+    }
+
     // ============================================================
     // CSV LOADING (procedural)
     // ============================================================
@@ -430,20 +447,20 @@ public class CP1MS2 {
 
     String[] parts = line.split(",", -1);
 
-    if (parts.length < 7) return;
+    if (parts.length < 8) return;
 
-    int eno = parseIntSafe(parts[0]);
+    int eno = parseIntSafe(parts[0]); // employee no
 
-    String lastName = parts[1].trim();
-    String firstName = parts[2].trim();
+    String lastName = parts[1].trim(); // last name
+    String firstName = parts[2].trim(); // first name
     String fullName = firstName + " " + lastName;
 
     String birthday = parts[3].trim();     // birthday
-    double rate = parseDoubleSafe(parts[7].trim());   // HourlyRate
 
-    LocalDate date = parseDate(parts[4].trim());
-    LocalTime tin = parseTime(parts[5].trim());
-    LocalTime tout = parseTime(parts[6].trim());
+    LocalDate date = parseDate(parts[4].trim()); // date
+    LocalTime tin = parseTime(parts[5].trim()); //time in
+    LocalTime tout = parseTime(parts[6].trim()); //time out
+    double rate = parseDoubleSafe(parts[7].trim());   // HourlyRate
 
     int idx = findEmployeeIndex(eno);
 
@@ -549,4 +566,3 @@ public class CP1MS2 {
         }
     } 
 }
-   
