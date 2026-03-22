@@ -388,7 +388,7 @@ public class CP1MS2 {
     // ============================================================
 
     static boolean loadCSV() { 
-        String filePath = "motorph_data.csv";
+        String filePath = "Employeedata.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 
             String line = br.readLine();
@@ -430,7 +430,7 @@ public class CP1MS2 {
 
     String[] parts = line.split(",", -1);
 
-    if (parts.length < 6) return;
+    if (parts.length < 8) return;
 
     int eno = parseIntSafe(parts[0]);
 
